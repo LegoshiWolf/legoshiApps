@@ -1,0 +1,258 @@
+/* CSS Document */
+body, h1, h2, h3, p, ul {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	line-height: 1.6;
+	background-color: #F7F7F7;
+	color: #333;
+}
+
+header {
+	background-color: #333;
+	color: #FFF;
+	padding: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.download-button {
+    display: inline-flex;
+	flex-direction: column;
+	align-items: content;
+	justify-content: flex-end;
+	text-align: center;
+    padding: 15px 30px; /* Adjust the padding as needed */
+    font-size: 16px; /* Adjust the font size as needed */
+    background-color: #333;
+    color: #FFF;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    position: relative;
+	width: 80%;
+	height: 20%;
+}
+
+.download-button:hover {
+	background-color: #555;
+}
+
+.download-button .button-title {
+	margin-bottom: 5px;
+}
+
+.download-button i {
+	margin-top: auto;
+}
+
+.logo {
+	display: flex;
+	align-items: center;
+}
+
+.logo img {
+	width: 50px;
+	height: 50px;
+	margin-right: 10px;
+}
+
+h1 {
+	font-size: 1.5em;
+	margin-bottom: 0px;
+}
+
+.navbar {
+	display: flex;
+	align-items: center;
+}
+
+.menu-toggle {
+	display: none;
+	cursor: pointer;
+	margin-right: 20px;
+}
+
+.menu-toggle .bar {
+	display: block;
+	width: 25px;
+	height: 3px;
+	background-color: #FFF;
+	margin: 5px 0;
+	transition: transform 0.4s, opacity 0.4s;
+}
+
+.nav-menu {
+	list-style-type: none;
+	display: flex;
+}
+
+.nav-menu li {
+	margin-right: 20px;
+}
+
+.nav-menu li a {
+	color: #FFF;
+	text-decoration: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	background-color: #333;
+	transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-menu li a:hover {
+	background-color: #555;
+	color: #FFF;
+}
+
+main {
+	padding: 20px;
+}
+
+.app-list {
+	margin-top: 20px;
+}
+
+.app-list h2 {
+	font-size: 1.5em;
+	margin-bottom: 10px;
+}
+
+.app-list ul {
+	list-style-type: none;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	grid-gap: 20px;
+}
+
+.app-list li {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	background-color: #FFF;
+	padding: 10px;
+	border-radius: 10px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.app-list li img {
+	width: 100%;
+	height: auto;
+	border-radius: 5px;
+}
+
+.app-list li h3 {
+	font-size: 1.2em;
+	margin-bottom: 5px;
+}
+
+.app-list li p {
+	margin-bottom: 10px;
+}
+
+.app-list li a {
+	display: inline-block;
+	padding: 10px 20px;
+	background-color: #333;
+	color: #FFF;
+	text-decoration: none;
+	border-radius: 10px;
+	transition: background-color 0.3s;
+}
+
+.app-list li a:hover {
+	background-color: #555;
+}
+
+/* Footer styles */
+footer {
+    display: flex;
+    justify-content: center; /* Center the items horizontally */
+    align-items: center; /* Center the items vertically */
+    background-color: #333;
+    color: #FFF;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 50px; /* Adjusted height for both desktop and mobile */
+}
+
+.social-icons {
+    display: flex;
+    align-items: center; /* Align social icons vertically with the text */
+    margin-right: 10px; /* Add some space between icons and text */
+}
+
+.social-icons a {
+    color: #FFF;
+    font-size: 1.5em;
+    margin-right: 10px;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #C18400;
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 760px) {
+	.menu-toggle {
+		display: block;
+	}
+	
+	.nav-menu {
+		display: none;
+		flex-direction: column;
+		position: absolute;
+		top: 60px;
+		left: 0;
+		width: 100%;
+		background-color: #333;
+		padding: 20px;
+		box-sizing: border-box;
+	}
+	
+	.nav-menu.active {
+		display: flex;
+	}
+	
+	.nav-menu li {
+		margin-right: 0;
+		margin-bottom: 10px;
+	}
+	
+	header {
+		padding: 10px;
+	}
+	
+	.logo img {
+		width: 40px;
+		height: 40px;
+		margin-right: 8px;
+	}
+	
+	h1 {
+		font-size: 1.2em;
+	}
+	
+	.app-list li {
+		padding: 15px;
+	}
+	
+	.app-list li a {
+		padding: 8px 15px;
+	}
+	
+    footer {
+        height: 70px; /* Adjust height for mobile */
+        padding: 10px; /* Adjust padding for mobile */
+    }
+}
