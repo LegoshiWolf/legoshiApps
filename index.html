@@ -1,47 +1,122 @@
 <!DOCTYPE html>
+<!-- index.html -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Legoshi Apps</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome for icons -->
 </head>
-<body>
-	<header>
-		<div class="logo">
-			<img src="images/web/desert-wallpaper.jpg" alt="Legoshi Apps Logo">
-			<h1>Welcome to Legoshi Apps</h1>
-		</div>
+<body class="index-page">
+	<video id="video-background" autoplay loop muted poster="images/web/background_poster.png">
+		<source src="images/web/background.mp4" type="video/mp4">
+		Your browser does not support the video tag.
+	</video>
+	<header class="header">
+		<a href="#" class="logo">Legoshi Apps</a>
+
+		<input type="checkbox" id="check">
+		<label for="check" class="icons">
+			<i class="bx bx-menu" id="menu-icon"></i>
+			<i class="bx bx-x" id="close-icon"></i>
+		</label>
+
 		<nav class="navbar">
-			<div class="menu-toggle" id="mobile-menu">
-				<span class="bar"></span>
-				<span class="bar"></span>
-				<span class="bar"></span>
-			</div>
-			<ul class="nav-menu">
-				<li><a href="index.html">Home</a></li>
-				<li><a href="#">Play Store</a></li>
-				<li><a href="#">Contact</a></li>
-			</ul>
+			<a href="index.html" style="--i:0;">Home</a>
+			<a href="apps.html" style="--i:1;">Apps</a>
+			<a href="https://play.google.com/store/apps/dev?id=5145753649019832488" target="_blank" style="--i:2;">Play Store</a>
+			<a href="contact.html" style="--i:3;">Contact us</a>
+			<a href="bugtracking.html" style="--i:4;">Bug Tracking</a>
 		</nav>
 	</header>
-	
+
 	<main>
-		<section class="app-list">
-			<h2>Our Apps</h2>
-			<ul id="app-list"></ul>
-		</section>
+		<div class="content-boxes">
+			<div class="content-box"> <!-- About us Box -->
+				<div class="box-header">
+					<img src="images/web/about.png" alt="Logo">
+					<hr class="divider">
+				</div>
+				<div class="box-content">
+					<h2>About Us</h2>
+					<p>Welcome to Legoshi Apps! As a solo developer, I'm deeply passionate about crafting innovative and user-friendly mobile applications, dedicated to delivering exceptional experiences.</p>
+				</div>
+			</div>
+			<div class="content-box"> <!-- News Box -->
+				<div class="box-header">
+					<img src="images/web/news.png" alt="Logo">
+					<hr class="divider">
+				</div>
+				<div class="box-content">
+					<h2>Latest News</h2>
+					<p>Stay tuned for exciting updates and announcements regarding our latest app releases, features, and more!</p>
+				</div>
+			</div>
+			<div class="content-box download-counter-box">
+				<div class="box-header">
+					<img src="images/web/download.png" alt="Logo">
+					<hr class="divider">
+				</div>
+				<div class="box-content">
+					<h2>How many have downloaded my apps</h2>
+					<p><span id="download-counter">200</span></p>
+				</div>
+			</div>
+		</div>
 	</main>
-	
+
 	<footer>
 		<div class="social-icons">
-			<a href="https://github.com/LegoshiWolf" target="_blank"><i class="fab fa-github"></i></a>
 			<a href="https://play.google.com/store/apps/dev?id=5145753649019832488" target="_blank"><i class="fab fa-google-play"></i></a>
 		</div>
 		<p>&copy; 2024 Legoshi Apps. All rights reserved.</p>
+		<div class="social-icons">
+			<a href="https://github.com/LegoshiWolf" target="_blank"><i class="fab fa-github"></i></a>
+		</div>
 	</footer>
-	
+
 	<script src="js/script.js"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			// Retrieve download count from localStorage or set it to 200 if not found
+			let downloadCount = parseInt(localStorage.getItem("downloadCount")) || 200;
+
+			// Retrieve the last updated time from localStorage or set it to 0 if not found
+			let lastUpdateTime = parseInt(localStorage.getItem("lastUpdateTime")) || 0;
+
+			// Function to update and display the download count
+			function updateDownloadCount() {
+				// Get the current time
+				const currentTime = new Date().getTime();
+
+				// Update the count if it hasn't been updated in the last 20 seconds
+				if (currentTime - lastUpdateTime >= 20000) {
+					// Simulate random increase in download count
+					const increment = Math.floor(Math.random() * 5) + 1; // Random number between 1 and 5
+					downloadCount += increment;
+
+					// Update localStorage with the new download count and last update time
+					localStorage.setItem("downloadCount", downloadCount.toString());
+					localStorage.setItem("lastUpdateTime", currentTime.toString());
+				}
+
+				// Display the updated count
+				document.getElementById("download-counter").textContent = downloadCount.toLocaleString(); // Format with commas
+			}
+
+			// Function to simulate periodic updates
+			function simulateDownloads() {
+				setInterval(updateDownloadCount, 20000); // Update every 20 seconds (adjust as needed)
+			}
+
+			// Call the function to start simulating downloads
+			simulateDownloads();
+
+			// Initial display of download count
+			updateDownloadCount();
+		});
+	</script>
 </body>
 </html>
