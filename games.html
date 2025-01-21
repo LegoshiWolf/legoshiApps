@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<!-- apps.html -->
+<!-- games.html -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legoshi Apps</title>
+    <title>Legoshi Games</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome for icons -->
 </head>
-<body class="apps-page">
+<body class="games-page">
 	<video id="video-background" autoplay loop muted poster="images/web/background_poster.png">
 		<source src="images/web/background.mp4" type="video/mp4">
 		Your browser does not support the video tag.
@@ -34,8 +34,8 @@
 	</header>
 	
 	<main>
-		<section class="app-list">
-			<ul id="app-list"></ul>
+		<section class="games-list">
+			<ul id="games-list"></ul>
 		</section>
 	</main>
 	
@@ -68,42 +68,8 @@
         const db = getFirestore(app);
 
         document.addEventListener("DOMContentLoaded", function () {
-            const appList = document.querySelector('.app-list ul');
-            const apps = [
-                {
-                    name: "Time Calculator",
-                    description: "Quickly calculate the time difference between two moments, displaying results in minutes or hours and minutes. Easy to use and supports multiple languages.",
-                    imageSrc: "images/web/time_calc_app_logo.png",
-                    downloadLink: "apks/TimeCalculator.apk"
-                }
-            ];
-
-            function generateAppHTML(app) {
-                return `
-                    <li>
-                        <img src="${app.imageSrc}" alt="${app.name}">
-                        <h3>${app.name}</h3>
-                        <p>${app.description}</p>
-                        <a href="${app.downloadLink}" download class="download-button">
-                            <span class="button-title">Download</span>
-                            <i class="fas fa-download"></i>
-                        </a>
-                    </li>
-                `;
-            }
-
-            function populateAppList() {
-                let html = "";
-                apps.forEach(function (app) {
-                    html += generateAppHTML(app);
-                });
-                appList.innerHTML = html;
-            }
-
-            populateAppList();
-
-            // Firestore reference to the download counter
-            const downloadCounterRef = doc(db, "app_data", "download_counter");
+            // Firestore reference to the games download counter
+            const downloadCounterRef = doc(db, "game_data", "download_counter");
 
             async function incrementDownloadCounter() {
                 const docSnap = await getDoc(downloadCounterRef);

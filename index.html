@@ -56,14 +56,25 @@
 				</div>
 			</div>
 			<div class="content-box download-counter-box">
-				<div class="box-header">
-					<img src="images/web/download.png" alt="Logo">
-					<hr class="divider">
-				</div>
-                <div class="box-content">
-                    <h2>How many have downloaded my apps</h2>
-                    <p><span id="download-counter">Loading...</span></p>
-                </div>
+			    <div class="box-header">
+			        <img src="images/web/download.png" alt="Logo">
+			        <hr class="divider">
+			    </div>
+			    <div class="box-content">
+			        <h2>How many have downloaded my apps</h2>
+			        <p><span id="download-counter">Loading...</span></p>
+			    </div>
+			</div>
+
+			<div class="content-box download-counter-box">
+			    <div class="box-header">
+			        <img src="images/web/download.png" alt="Logo">
+			        <hr class="divider">
+			    </div>
+			    <div class="box-content">
+			        <h2>How many have downloaded my games</h2>
+			        <p><span id="download-counter-games">Loading...</span></p>
+			    </div>
 			</div>
 		</div>
 	</main>
@@ -97,19 +108,30 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        document.addEventListener("DOMContentLoaded", async function () {
-            const downloadCounterElement = document.getElementById("download-counter");
+		document.addEventListener("DOMContentLoaded", async function () {
+		    const downloadCounterElement = document.getElementById("download-counter");
+		    const downloadCounterGamesElement = document.getElementById("download-counter-games");
 
-            const downloadCounterRef = doc(db, "app_data", "download_counter");
+		    const downloadCounterRef = doc(db, "app_data", "download_counter");
+		    const downloadCounterGamesRef = doc(db, "game_data", "download_counter");
 
-            const docSnap = await getDoc(downloadCounterRef);
-            if (docSnap.exists()) {
-                const count = docSnap.data().count;
-                downloadCounterElement.textContent = count.toLocaleString();
-            } else {
-                downloadCounterElement.textContent = "0"; 
-            }
-        });
+		    const docSnap = await getDoc(downloadCounterRef);
+		    if (docSnap.exists()) {
+		        const count = docSnap.data().count;
+		        downloadCounterElement.textContent = count.toLocaleString();
+		    } else {
+		        downloadCounterElement.textContent = "0"; 
+		    }
+
+		    const docSnap2 = await getDoc(downloadCounterGamesRef);
+		    if (docSnap2.exists()) {
+		        const count = docSnap2.data().count;
+		        downloadCounterGamesElement.textContent = count.toLocaleString();
+		    } else {
+		        downloadCounterGamesElement.textContent = "0";
+		    }
+		});
+
     </script>
 </body>
 </html>

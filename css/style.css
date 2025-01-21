@@ -277,6 +277,67 @@ main {
 	background-color: #555;
 }
 
+.games-list {
+	margin-top: 100px;
+}
+
+.games-list h2 {
+	font-size: 1.5em;
+	margin-bottom: 10px;
+}
+
+.games-list ul {
+	list-style-type: none;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	grid-gap: 20px;
+}
+
+.games-list li {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	background: rgba(0, 0, 0, .2);
+    backdrop-filter: blur(5px);
+	padding: 10px;
+	border-radius: 10px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	width: 230px;
+}
+
+.games-list li img {
+	width: 100%;
+	height: auto;
+	border-radius: 5px;
+}
+
+.games-list li h3 {
+	color: #FFF;
+	font-size: 1.2em;
+	margin-bottom: 15px;
+}
+
+.games-list li p {
+	color: #FFF;
+	margin-bottom: 10px;
+}
+
+.games-list li a {
+	display: inline-block;
+	padding: 10px 20px;
+	background: rgba(90, 90, 90, .2);
+    backdrop-filter: blur(5px);
+	color: #FFF;
+	text-decoration: none;
+	border-radius: 10px;
+	transition: background-color 0.3s;
+}
+
+.games-list li a:hover {
+	background-color: #555;
+}
+
 /* Contact Page */
 .contact-box {
     width: 80%;
@@ -371,14 +432,14 @@ footer {
 
 @media only screen and (max-width: 768px) {
 	.content-boxes {
+		padding-top: 20px;
 		margin: 60px;
 		flex-direction: column;
 		height: auto;
 	}
 	
 	.content-box {
-		width: 50%;
-		margin: 10px auto;
+		margin: 0 0 20px 0;
 	}
 	
 	.box-content {
@@ -444,6 +505,7 @@ footer {
 	}
 	
 	.app-list {
+		padding-top: 20px;
 		margin-top: 60px;
 	}
 	
@@ -466,11 +528,34 @@ footer {
 		padding: 8px 15px;
 	}
 	
+	.games-list {
+		padding-top: 20px;
+		margin-top: 60px;
+	}
+	
+	.games-list li {
+		width: 90%;
+		margin: 10px auto;
+		padding: 10px;
+	}
+	
+	.games-list li h3 {
+		font-size: 1em;
+	}
+	
+	.games-list li p {
+		font-size: 0.8em;
+	}
+	
+	.games-list li a {
+		font-size: 0.8em;
+		padding: 8px 15px;
+	}
+	
 	/* Contact Page */
     .contact-box {
+    	padding-top: 20px;
         width: 90%;
-        margin: 50px auto;
-        padding: 30px;
     }
 
     .contact-box input,

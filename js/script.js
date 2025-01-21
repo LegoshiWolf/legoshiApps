@@ -58,4 +58,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
         populateAppList();
     }
+
+    // Check if gameList exists
+    const gameList = document.querySelector('.games-list ul');
+    if (gameList) {
+        const games = [
+            {
+                name: "Test Game",
+                description: "Just a empty test game zip file",
+                imageSrc: "images/web/time_calc_app_logo.png",
+                downloadLink: "games/testgame.zip"
+            }
+        ];
+
+        function generateGameHTML(game) {
+            return `
+                <li>
+                    <img src="${game.imageSrc}" alt="${game.name}">
+                    <h3>${game.name}</h3>
+                    <p>${game.description}</p>
+                    <a href="${game.downloadLink}" download class="download-button">
+                        <span class="button-title">Download</span>
+                        <i class="fas fa-download"></i>
+                    </a>
+                </li>
+            `;
+        }
+
+        function populateGameList() {
+            let html = "";
+            games.forEach(function(game) {
+                html += generateGameHTML(game);
+            });
+            gameList.innerHTML = html;
+        }
+
+        populateGameList();
+    }
 });
