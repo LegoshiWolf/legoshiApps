@@ -49,5 +49,80 @@
 	</footer>
 	
 	<script src="js/script.js"></script>
+	    <!-- Firebase JS SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+        import { getFirestore, doc, getDoc, updateDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBrX7WhNRFZcMOn8788dqqYWuIFE8NR53c",
+            authDomain: "legoshiapps.firebaseapp.com",
+            projectId: "legoshiapps",
+            storageBucket: "legoshiapps.appspot.com",
+            messagingSenderId: "609788422300",
+            appId: "1:609788422300:web:f6a84dd7e72e1f5571a559"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const appList = document.querySelector('.app-list ul');
+            const apps = [
+                {
+                    name: "Time Calculator",
+                    description: "Quickly calculate the time difference between two moments, displaying results in minutes or hours and minutes. Easy to use and supports multiple languages.",
+                    imageSrc: "images/web/time_calc_app_logo.png",
+                    downloadLink: "apks/TimeCalculator.apk"
+                }
+            ];
+
+            function generateAppHTML(app) {
+                return `
+                    <li>
+                        <img src="${app.imageSrc}" alt="${app.name}">
+                        <h3>${app.name}</h3>
+                        <p>${app.description}</p>
+                        <a href="${app.downloadLink}" download class="download-button">
+                            <span class="button-title">Download</span>
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </li>
+                `;
+            }
+
+            function populateAppList() {
+                let html = "";
+                apps.forEach(function (app) {
+                    html += generateAppHTML(app);
+                });
+                appList.innerHTML = html;
+            }
+
+            populateAppList();
+
+            // Firestore reference to the download counter
+            const downloadCounterRef = doc(db, "app_data", "download_counter");
+
+            async function incrementDownloadCounter() {
+                const docSnap = await getDoc(downloadCounterRef);
+                if (docSnap.exists()) {
+                    let currentCount = docSnap.data().count;
+                    currentCount += 1;
+                    await updateDoc(downloadCounterRef, { count: currentCount });
+                } else {
+                    await setDoc(downloadCounterRef, { count: 1 });
+                }
+            }
+
+            // Add click event listeners to all download buttons
+            const downloadButtons = document.querySelectorAll('.download-button');
+            downloadButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    incrementDownloadCounter(); // Increment counter on download click
+                });
+            });
+        });
+    </script>
 </body>
 </html>

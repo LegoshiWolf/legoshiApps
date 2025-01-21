@@ -59,10 +59,10 @@
 					<img src="images/web/download.png" alt="Logo">
 					<hr class="divider">
 				</div>
-				<div class="box-content">
-					<h2>How many have downloaded my apps</h2>
-					<p><span id="download-counter">200</span></p>
-				</div>
+                <div class="box-content">
+                    <h2>How many have downloaded my apps</h2>
+                    <p><span id="download-counter">Loading...</span></p>
+                </div>
 			</div>
 		</div>
 	</main>
@@ -78,45 +78,37 @@
 	</footer>
 
 	<script src="js/script.js"></script>
-	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-			// Retrieve download count from localStorage or set it to 200 if not found
-			let downloadCount = parseInt(localStorage.getItem("downloadCount")) || 200;
 
-			// Retrieve the last updated time from localStorage or set it to 0 if not found
-			let lastUpdateTime = parseInt(localStorage.getItem("lastUpdateTime")) || 0;
+    <!-- Firebase JS SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
 
-			// Function to update and display the download count
-			function updateDownloadCount() {
-				// Get the current time
-				const currentTime = new Date().getTime();
+        const firebaseConfig = {
+            apiKey: "AIzaSyBrX7WhNRFZcMOn8788dqqYWuIFE8NR53c",
+            authDomain: "legoshiapps.firebaseapp.com",
+            projectId: "legoshiapps",
+            storageBucket: "legoshiapps.appspot.com",
+            messagingSenderId: "609788422300",
+            appId: "1:609788422300:web:f6a84dd7e72e1f5571a559"
+        };
 
-				// Update the count if it hasn't been updated in the last 20 seconds
-				if (currentTime - lastUpdateTime >= 20000) {
-					// Simulate random increase in download count
-					const increment = Math.floor(Math.random() * 5) + 1; // Random number between 1 and 5
-					downloadCount += increment;
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
 
-					// Update localStorage with the new download count and last update time
-					localStorage.setItem("downloadCount", downloadCount.toString());
-					localStorage.setItem("lastUpdateTime", currentTime.toString());
-				}
+        document.addEventListener("DOMContentLoaded", async function () {
+            const downloadCounterElement = document.getElementById("download-counter");
 
-				// Display the updated count
-				document.getElementById("download-counter").textContent = downloadCount.toLocaleString(); // Format with commas
-			}
+            const downloadCounterRef = doc(db, "app_data", "download_counter");
 
-			// Function to simulate periodic updates
-			function simulateDownloads() {
-				setInterval(updateDownloadCount, 20000); // Update every 20 seconds (adjust as needed)
-			}
-
-			// Call the function to start simulating downloads
-			simulateDownloads();
-
-			// Initial display of download count
-			updateDownloadCount();
-		});
-	</script>
+            const docSnap = await getDoc(downloadCounterRef);
+            if (docSnap.exists()) {
+                const count = docSnap.data().count;
+                downloadCounterElement.textContent = count.toLocaleString();
+            } else {
+                downloadCounterElement.textContent = "0"; 
+            }
+        });
+    </script>
 </body>
 </html>
