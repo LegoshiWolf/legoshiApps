@@ -1,6 +1,30 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("DOMContentLoaded event fired.");
 
+    function isMobileOrTablet() {
+        return /Mobi|Android|Tablet|iPad|iPhone/i.test(navigator.userAgent);
+    }
+
+    function enforceOrientation() {
+        if (isMobileOrTablet()) {
+            if (window.innerWidth > window.innerHeight) {
+                // Device is in landscape mode
+                if (!sessionStorage.getItem("landscapeAlertShown")) {
+                    document.body.style.display = "none";
+                    alert("Please rotate your device to portrait mode.");
+                    sessionStorage.setItem("landscapeAlertShown", "true"); // Set the flag to true after showing the alert
+                }
+            } else {
+                // Device is in portrait mode or desktop
+                document.body.style.display = "block";
+                sessionStorage.removeItem("landscapeAlertShown"); // Remove the flag when in portrait mode
+            }
+        }
+    }
+
+    window.addEventListener("load", enforceOrientation);
+    window.addEventListener("resize", enforceOrientation);
+
     // Get the current page's URL
     const currentPageUrl = window.location.href;
 
