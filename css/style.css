@@ -105,6 +105,29 @@ body {
   	color: #fff; /* Text color */
 }
 
+#newsletterForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#subscribe-btn, #unsubscribe-btn {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#unsubscribe-btn {
+    background-color: #f44336;
+}
+
+#unsubscribe-btn:hover, #subscribe-btn:hover {
+    opacity: 0.8;
+}
+
 .download-counter-box {
 	background: rgba(0, 0, 0, .2);
     backdrop-filter: blur(5px);
@@ -228,8 +251,9 @@ main {
 .app-list ul {
 	list-style-type: none;
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-	grid-gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); /* Responsive grid */
+	grid-gap: 50px;
+	padding: 0px 0px 50px 0;
 }
 
 .app-list li {
@@ -289,8 +313,9 @@ main {
 .games-list ul {
 	list-style-type: none;
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-	grid-gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); /* Responsive grid */
+	grid-gap: 50px;
+	padding: 0px 0px 50px 0;
 }
 
 .games-list li {
@@ -424,10 +449,42 @@ footer {
 }
 
 /* Responsive Design */
+@media only screen and (max-width: 1200px) {
+	.app-list ul {
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* More flexible columns on larger tablets */
+	}
+	.game-list ul {
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* More flexible columns on larger tablets */
+	}
+}
+
 @media only screen and (max-width: 992px) {
 	.header {
 		padding: 1.3rem 5%;
 	}
+
+	.app-list ul {
+		grid-template-columns: repeat(2, 1fr); /* 2 items per row on medium screens */
+	}
+
+	.game-list ul {
+		grid-template-columns: repeat(2, 1fr); /* 2 items per row on medium screens */
+	}
+}
+
+@media only screen and (max-width: 600px) {
+    .app-list ul {
+        grid-template-columns: 1fr; /* 1 item per row on small screens like phones */
+    }
+    .app-list ul li {
+        padding: 0 20px; /* Add some padding to avoid items sticking to the edges */
+    }
+    .game-list ul {
+        grid-template-columns: 1fr; /* 1 item per row on small screens like phones */
+    }
+    .game-list ul li {
+        padding: 0 20px; /* Add some padding to avoid items sticking to the edges */
+    }
 }
 
 @media only screen and (max-width: 768px) {

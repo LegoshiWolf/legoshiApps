@@ -45,15 +45,20 @@
 					<p>Welcome to Legoshi Apps! As a solo developer, I'm deeply passionate about crafting innovative and user-friendly mobile applications, dedicated to delivering exceptional experiences.</p>
 				</div>
 			</div>
-			<div class="content-box"> <!-- News Box -->
-				<div class="box-header">
-					<img src="images/web/news.png" alt="Logo">
-					<hr class="divider">
-				</div>
-				<div class="box-content">
-					<h2>Latest News</h2>
-					<p>Stay tuned for exciting updates and announcements regarding our latest app releases, features, and more!</p>
-				</div>
+			<div class="content-box"> <!-- Newsletter Signup Box -->
+			    <div class="box-header">
+			        <img src="images/web/news.png" alt="Logo">
+			        <hr class="divider">
+			    </div>
+			    <div class="box-content">
+			        <h2>Subscribe to Our Newsletter</h2>
+			        <p>Stay tuned for exciting updates and announcements regarding our latest app releases, features, and more!</p>
+			        <form id="newsletterForm">
+			            <input type="email" name="email" id="email" placeholder="Enter your email" required>
+			            <button type="submit" id="subscribe-btn">Subscribe</button>
+			            <button type="button" id="unsubscribe-btn" style="display: none;">Unsubscribe</button>
+			        </form>
+			    </div>
 			</div>
 			<div class="content-box download-counter-box">
 			    <div class="box-header">
@@ -65,7 +70,6 @@
 			        <p><span id="download-counter">Loading...</span></p>
 			    </div>
 			</div>
-
 			<div class="content-box download-counter-box">
 			    <div class="box-header">
 			        <img src="images/web/download.png" alt="Logo">
@@ -94,7 +98,7 @@
     <!-- Firebase JS SDK -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
-        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
+		import { getFirestore, collection, doc, setDoc, getDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyBrX7WhNRFZcMOn8788dqqYWuIFE8NR53c",
@@ -107,6 +111,63 @@
 
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
+
+		const newsletterForm = document.getElementById("newsletterForm");
+		const subscribeButton = document.getElementById("subscribe-btn");
+		const unsubscribeButton = document.getElementById("unsubscribe-btn");
+		const emailInput = document.getElementById("email");
+
+		// Handle newsletter subscription
+		newsletterForm.addEventListener("submit", async function (event) {
+		    event.preventDefault();
+		    const email = emailInput.value;
+		    const emailRef = doc(db, "subscribers", email);
+
+		    const docSnap = await getDoc(emailRef);
+		    if (docSnap.exists()) {
+		        alert("You are already subscribed!");
+		        unsubscribeButton.style.display = "inline-block"; // Show unsubscribe button
+		        subscribeButton.style.display = "none"; // Hide subscribe button
+		    } else {
+		        // Add the email to the database
+		        await setDoc(emailRef, {
+		            email: email,
+		            timestamp: new Date()
+		        });
+		        alert("You have successfully subscribed to our newsletter!");
+		        unsubscribeButton.style.display = "inline-block"; // Show unsubscribe button
+		        subscribeButton.style.display = "none"; // Hide subscribe button
+		    }
+		});
+
+		// Handle unsubscribe
+		unsubscribeButton.addEventListener("click", async function () {
+		    const email = emailInput.value;
+		    const emailRef = doc(db, "subscribers", email);
+
+		    const docSnap = await getDoc(emailRef);
+		    if (docSnap.exists()) {
+		        await deleteDoc(emailRef);
+		        alert("You have successfully unsubscribed from our newsletter.");
+		        subscribeButton.style.display = "inline-block"; // Show subscribe button
+		        unsubscribeButton.style.display = "none"; // Hide unsubscribe button
+		    } else {
+		        alert("No subscription found for this email.");
+		    }
+		});
+
+		// Check if the user is already subscribed when the page loads
+		document.addEventListener("DOMContentLoaded", async function () {
+		    const email = emailInput.value;
+		    if (email) {
+		        const emailRef = doc(db, "subscribers", email);
+		        const docSnap = await getDoc(emailRef);
+		        if (docSnap.exists()) {
+		            unsubscribeButton.style.display = "inline-block";
+		            subscribeButton.style.display = "none";
+		        }
+		    }
+		});
 
 		document.addEventListener("DOMContentLoaded", async function () {
 		    const downloadCounterElement = document.getElementById("download-counter");

@@ -56,6 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 imageSrc: "images/web/time_calc_app_logo.png",
                 downloadLink: "apks/TimeCalculator.apk"
             }
+            // You can add more apps here if needed
         ];
 
         function generateAppHTML(app) {
@@ -89,10 +90,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const games = [
             {
                 name: "Aurawalk",
-                description: "Is an immersive and atmospheric game that invites players into a unique world full of diverse creatures and environments. Explore beautiful, captivating landscapes. This game combines elements of exploration, discovery, and nature-inspired adventures, making it perfect for those who enjoy immersive experiences.",
+                description: "Is an immersive and atmospheric game that invites players into a unique world full of diverse creatures and environments. This game combines elements of exploration, discovery, and nature-inspired adventures, making it perfect for those who enjoy immersive experiences.",
                 imageSrc: "images/web/aurawalk_logo.png",
                 downloadLink: "games/aurawalk.zip"
             }
+            // You can add more games here if needed
         ];
 
         function generateGameHTML(game) {
