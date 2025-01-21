@@ -99,7 +99,7 @@ body {
   	border: 1px solid #898989;
   	margin: 10px;
   	text-align: center;
-  	height: 400px; /* Adjust the height as needed */
+  	height: 500px; /* Adjust the height as needed */
 	background: rgba(0, 0, 0, .2);
     backdrop-filter: blur(5px);
   	color: #fff; /* Text color */
@@ -109,23 +109,45 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+#email {
+    width: 80%; /* Makes the input field wider */
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px;
 }
 
 #subscribe-btn, #unsubscribe-btn {
-    padding: 10px;
+    padding: 12px 20px;
+    font-size: 16px;
     background-color: #4CAF50;
     color: white;
     border: none;
+    border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 80%;
 }
 
 #unsubscribe-btn {
-    background-color: #f44336;
+    background-color: #f44336; /* Red for unsubscribe */
 }
 
 #unsubscribe-btn:hover, #subscribe-btn:hover {
-    opacity: 0.8;
+    opacity: 0.8; /* Slightly darken the button when hovered */
+}
+
+#subscribe-btn {
+    display: inline-block; /* Ensure the subscribe button is visible */
+}
+
+#unsubscribe-btn {
+    display: none; /* Hide unsubscribe button by default */
 }
 
 .download-counter-box {

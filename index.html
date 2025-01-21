@@ -10,95 +10,97 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome for icons -->
 </head>
 <body class="index-page">
-	<video id="video-background" autoplay loop muted poster="images/web/background_poster.png">
-		<source src="images/web/background.mp4" type="video/mp4">
-		Your browser does not support the video tag.
-	</video>
-	<header class="header">
-		<a href="#" class="logo">Legoshi Apps</a>
+    <video id="video-background" autoplay loop muted poster="images/web/background_poster.png">
+        <source src="images/web/background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <header class="header">
+        <a href="#" class="logo">Legoshi Apps</a>
 
-		<input type="checkbox" id="check">
-		<label for="check" class="icons">
-			<i class="bx bx-menu" id="menu-icon"></i>
-			<i class="bx bx-x" id="close-icon"></i>
-		</label>
+        <input type="checkbox" id="check">
+        <label for="check" class="icons">
+            <i class="bx bx-menu" id="menu-icon"></i>
+            <i class="bx bx-x" id="close-icon"></i>
+        </label>
 
-		<nav class="navbar">
-			<a href="index.html" style="--i:0;">Home</a>
-			<a href="apps.html" style="--i:1;">Apps</a>
-			<a href="games.html" style="--i:2;">Games</a>
-			<!--<a href="https://play.google.com/store/apps/dev?id=5145753649019832488" target="_blank" style="--i:2;">Play Store</a>-->
-			<a href="contact.html" style="--i:3;">Contact us</a>
-			<!--<a href="bugtracking.html" style="--i:4;">Bug Tracking</a>-->
-		</nav>
-	</header>
+        <nav class="navbar">
+            <a href="index.html" style="--i:0;">Home</a>
+            <a href="apps.html" style="--i:1;">Apps</a>
+            <a href="games.html" style="--i:2;">Games</a>
+            <!--<a href="https://play.google.com/store/apps/dev?id=5145753649019832488" target="_blank" style="--i:2;">Play Store</a>-->
+            <a href="contact.html" style="--i:3;">Contact us</a>
+            <!--<a href="bugtracking.html" style="--i:4;">Bug Tracking</a>-->
+        </nav>
+    </header>
 
-	<main>
-		<div class="content-boxes">
-			<div class="content-box"> <!-- About us Box -->
-				<div class="box-header">
-					<img src="images/web/about.png" alt="Logo">
-					<hr class="divider">
-				</div>
-				<div class="box-content">
-					<h2>About Us</h2>
-					<p>Welcome to Legoshi Apps! As a solo developer, I'm deeply passionate about crafting innovative and user-friendly mobile applications, dedicated to delivering exceptional experiences.</p>
-				</div>
-			</div>
-			<div class="content-box"> <!-- Newsletter Signup Box -->
-			    <div class="box-header">
-			        <img src="images/web/news.png" alt="Logo">
-			        <hr class="divider">
-			    </div>
-			    <div class="box-content">
-			        <h2>Subscribe to Our Newsletter</h2>
-			        <p>Stay tuned for exciting updates and announcements regarding our latest app releases, features, and more!</p>
-			        <form id="newsletterForm">
-			            <input type="email" name="email" id="email" placeholder="Enter your email" required>
-			            <button type="submit" id="subscribe-btn">Subscribe</button>
-			            <button type="button" id="unsubscribe-btn" style="display: none;">Unsubscribe</button>
-			        </form>
-			    </div>
-			</div>
-			<div class="content-box download-counter-box">
-			    <div class="box-header">
-			        <img src="images/web/download.png" alt="Logo">
-			        <hr class="divider">
-			    </div>
-			    <div class="box-content">
-			        <h2>How many have downloaded my apps</h2>
-			        <p><span id="download-counter">Loading...</span></p>
-			    </div>
-			</div>
-			<div class="content-box download-counter-box">
-			    <div class="box-header">
-			        <img src="images/web/download.png" alt="Logo">
-			        <hr class="divider">
-			    </div>
-			    <div class="box-content">
-			        <h2>How many have downloaded my games</h2>
-			        <p><span id="download-counter-games">Loading...</span></p>
-			    </div>
-			</div>
-		</div>
-	</main>
+    <main>
+        <div class="content-boxes">
+            <div class="content-box"> <!-- About us Box -->
+                <div class="box-header">
+                    <img src="images/web/about.png" alt="Logo">
+                    <hr class="divider">
+                </div>
+                <div class="box-content">
+                    <h2>About Us</h2>
+                    <p>Welcome to Legoshi Apps! As a solo developer, I'm deeply passionate about crafting innovative and user-friendly mobile applications, dedicated to delivering exceptional experiences.</p>
+                </div>
+            </div>
+            <div class="content-box"> <!-- Newsletter Signup Box -->
+                <div class="box-header">
+                    <img src="images/web/news.png" alt="Logo">
+                    <hr class="divider">
+                </div>
+                <div class="box-content">
+                    <h2>Subscribe to Our Newsletter</h2>
+                    <p>Stay tuned for exciting updates and announcements regarding our latest app releases, features, and more!</p>
+                    <form id="newsletterForm">
+                        <input type="email" name="email" id="email" placeholder="Enter your email" required>
+                        <button type="submit" id="subscribe-btn">Subscribe</button>
+                        <button type="button" id="unsubscribe-btn" style="display: none;">Unsubscribe</button>
+                    </form>
+                    <!-- Add this element for the subscription message -->
+                    <p id="subscribeMessage"></p>
+                </div>
+            </div>
+            <div class="content-box download-counter-box">
+                <div class="box-header">
+                    <img src="images/web/download.png" alt="Logo">
+                    <hr class="divider">
+                </div>
+                <div class="box-content">
+                    <h2>How many have downloaded my apps</h2>
+                    <p><span id="download-counter">Loading...</span></p>
+                </div>
+            </div>
+            <div class="content-box download-counter-box">
+                <div class="box-header">
+                    <img src="images/web/download.png" alt="Logo">
+                    <hr class="divider">
+                </div>
+                <div class="box-content">
+                    <h2>How many have downloaded my games</h2>
+                    <p><span id="download-counter-games">Loading...</span></p>
+                </div>
+            </div>
+        </div>
+    </main>
 
-	<footer>
-		<div class="social-icons">
-			<a href="https://github.com/LegoshiWolf" target="_blank"><i class="fab fa-github"></i></a>
-		</div>
-		<p>&copy; 2024 Legoshi Apps. All rights reserved.</p>
-		<div class="social-icons">
-			<a href="https://github.com/LegoshiWolf" target="_blank"><i class="fab fa-github"></i></a>
-		</div>
-	</footer>
+    <footer>
+        <div class="social-icons">
+            <a href="https://github.com/LegoshiWolf" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+        <p>&copy; 2024 Legoshi Apps. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="https://github.com/LegoshiWolf" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+    </footer>
 
-	<script src="js/script.js"></script>
+    <script src="js/script.js"></script>
 
     <!-- Firebase JS SDK -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
-		import { getFirestore, collection, doc, setDoc, getDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
+        import { getFirestore, collection, doc, setDoc, getDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyBrX7WhNRFZcMOn8788dqqYWuIFE8NR53c",
@@ -112,87 +114,103 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-		const newsletterForm = document.getElementById("newsletterForm");
-		const subscribeButton = document.getElementById("subscribe-btn");
-		const unsubscribeButton = document.getElementById("unsubscribe-btn");
-		const emailInput = document.getElementById("email");
+        const newsletterForm = document.getElementById("newsletterForm");
+        const subscribeMessage = document.getElementById("subscribeMessage"); // Element for displaying the message
+        const subscribeButton = document.getElementById("subscribe-btn");
+        const unsubscribeButton = document.getElementById("unsubscribe-btn");
+        const emailInput = document.getElementById("email");
 
-		// Handle newsletter subscription
-		newsletterForm.addEventListener("submit", async function (event) {
-		    event.preventDefault();
-		    const email = emailInput.value;
-		    const emailRef = doc(db, "subscribers", email);
+        // Function to check if the email is already subscribed
+        async function checkSubscriptionStatus(email) {
+            const emailRef = doc(db, "newsletter_subscribers", email);
+            const emailSnap = await getDoc(emailRef);
+            return emailSnap.exists();
+        }
 
-		    const docSnap = await getDoc(emailRef);
-		    if (docSnap.exists()) {
-		        alert("You are already subscribed!");
-		        unsubscribeButton.style.display = "inline-block"; // Show unsubscribe button
-		        subscribeButton.style.display = "none"; // Hide subscribe button
-		    } else {
-		        // Add the email to the database
-		        await setDoc(emailRef, {
-		            email: email,
-		            timestamp: new Date()
-		        });
-		        alert("You have successfully subscribed to our newsletter!");
-		        unsubscribeButton.style.display = "inline-block"; // Show unsubscribe button
-		        subscribeButton.style.display = "none"; // Hide subscribe button
-		    }
-		});
+        // Handle newsletter subscription
+        newsletterForm.addEventListener("submit", async function(event) {
+            event.preventDefault();
+            const email = emailInput.value;
 
-		// Handle unsubscribe
-		unsubscribeButton.addEventListener("click", async function () {
-		    const email = emailInput.value;
-		    const emailRef = doc(db, "subscribers", email);
+            const isSubscribed = await checkSubscriptionStatus(email);
 
-		    const docSnap = await getDoc(emailRef);
-		    if (docSnap.exists()) {
-		        await deleteDoc(emailRef);
-		        alert("You have successfully unsubscribed from our newsletter.");
-		        subscribeButton.style.display = "inline-block"; // Show subscribe button
-		        unsubscribeButton.style.display = "none"; // Hide unsubscribe button
-		    } else {
-		        alert("No subscription found for this email.");
-		    }
-		});
+            if (isSubscribed) {
+                subscribeMessage.textContent = "You're already subscribed! If you want to unsubscribe, click below.";
+                subscribeMessage.style.color = "red";
 
-		// Check if the user is already subscribed when the page loads
-		document.addEventListener("DOMContentLoaded", async function () {
-		    const email = emailInput.value;
-		    if (email) {
-		        const emailRef = doc(db, "subscribers", email);
-		        const docSnap = await getDoc(emailRef);
-		        if (docSnap.exists()) {
-		            unsubscribeButton.style.display = "inline-block";
-		            subscribeButton.style.display = "none";
-		        }
-		    }
-		});
+                // Add Unsubscribe button
+                unsubscribeButton.style.display = "inline-block";
+                subscribeButton.style.display = "none";
 
-		document.addEventListener("DOMContentLoaded", async function () {
-		    const downloadCounterElement = document.getElementById("download-counter");
-		    const downloadCounterGamesElement = document.getElementById("download-counter-games");
+                unsubscribeButton.addEventListener("click", async function() {
+                    await deleteDoc(doc(db, "newsletter_subscribers", email));
+                    localStorage.removeItem("subscribedEmail");  // Remove from localStorage
+                    subscribeMessage.textContent = "You have successfully unsubscribed.";
+                    subscribeMessage.style.color = "green";
+                });
+            } else {
+                // If email doesn't exist, subscribe the user
+                await setDoc(doc(db, "newsletter_subscribers", email), { email: email });
+                localStorage.setItem("subscribedEmail", email);  // Save email in localStorage
+                subscribeMessage.textContent = "Thank you for subscribing!";
+                subscribeMessage.style.color = "green";
 
-		    const downloadCounterRef = doc(db, "app_data", "download_counter");
-		    const downloadCounterGamesRef = doc(db, "game_data", "download_counter");
+                // Hide Subscribe button and show Unsubscribe button
+                unsubscribeButton.style.display = "inline-block";
+                subscribeButton.style.display = "none";
+            }
+        });
 
-		    const docSnap = await getDoc(downloadCounterRef);
-		    if (docSnap.exists()) {
-		        const count = docSnap.data().count;
-		        downloadCounterElement.textContent = count.toLocaleString();
-		    } else {
-		        downloadCounterElement.textContent = "0"; 
-		    }
+        // Check if the user is already subscribed when the page loads
+        document.addEventListener("DOMContentLoaded", async function() {
+            const savedEmail = localStorage.getItem("subscribedEmail");
+            if (savedEmail) {
+                // Check Firestore to confirm subscription
+                const isSubscribed = await checkSubscriptionStatus(savedEmail);
+                if (isSubscribed) {
+                    subscribeMessage.textContent = "You're already subscribed!";
+                    subscribeMessage.style.color = "green";
 
-		    const docSnap2 = await getDoc(downloadCounterGamesRef);
-		    if (docSnap2.exists()) {
-		        const count = docSnap2.data().count;
-		        downloadCounterGamesElement.textContent = count.toLocaleString();
-		    } else {
-		        downloadCounterGamesElement.textContent = "0";
-		    }
-		});
+                    // Hide Subscribe button and show Unsubscribe button
+                    subscribeButton.style.display = "none";
+                    unsubscribeButton.style.display = "inline-block";
+                } else {
+                    subscribeMessage.textContent = "You can subscribe to our newsletter!";
+                    subscribeMessage.style.color = "black";
+                }
+            } else {
+                subscribeMessage.textContent = "You can subscribe to our newsletter!";
+                subscribeMessage.style.color = "black";
+            }
 
+            // Hide unsubscribe button if not in localStorage
+            unsubscribeButton.style.display = "none";
+        });
+
+        // Check and display download counters
+        document.addEventListener("DOMContentLoaded", async function () {
+            const downloadCounterElement = document.getElementById("download-counter");
+            const downloadCounterGamesElement = document.getElementById("download-counter-games");
+
+            const downloadCounterRef = doc(db, "app_data", "download_counter");
+            const downloadCounterGamesRef = doc(db, "game_data", "download_counter");
+
+            const docSnap = await getDoc(downloadCounterRef);
+            if (docSnap.exists()) {
+                const count = docSnap.data().count;
+                downloadCounterElement.textContent = count.toLocaleString();
+            } else {
+                downloadCounterElement.textContent = "0"; 
+            }
+
+            const docSnap2 = await getDoc(downloadCounterGamesRef);
+            if (docSnap2.exists()) {
+                const count = docSnap2.data().count;
+                downloadCounterGamesElement.textContent = count.toLocaleString();
+            } else {
+                downloadCounterGamesElement.textContent = "0";
+            }
+        });
     </script>
 </body>
 </html>
