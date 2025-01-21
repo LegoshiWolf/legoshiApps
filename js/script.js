@@ -88,10 +88,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (gameList) {
         const games = [
             {
-                name: "Test Game",
-                description: "Just a empty test game zip file",
-                imageSrc: "images/web/time_calc_app_logo.png",
-                downloadLink: "games/testgame.zip"
+                name: "Aurawalk",
+                description: "Is an immersive and atmospheric game that invites players into a unique world full of diverse creatures and environments. Explore beautiful, captivating landscapes. This game combines elements of exploration, discovery, and nature-inspired adventures, making it perfect for those who enjoy immersive experiences.",
+                imageSrc: "images/web/aurawalk_logo.png",
+                downloadLink: "games/aurawalk.zip"
             }
         ];
 
