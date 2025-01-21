@@ -27,10 +27,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (appList) {
         const apps = [
             {
-                name: "Cheat Codes",
-                description: "Cheat Codes is a handy companion app for gamers, offering cheat codes for popular games like Fallout New Vegas and The Sims 4 and many more. Easily browse cheats and stay up-to-date with the latest game cheat codes, all in one convenient interface.",
-                imageSrc: "images/web/Red_square.svg",
-                downloadLink: "apks/cheatcodes.apk"
+                name: "Time Calculator",
+                description: "Quickly calculate the time difference between two moments, displaying results in minutes or hours and minutes. Easy to use and supports multiple languages.",
+                imageSrc: "images/web/time_calc_app_logo.png",
+                downloadLink: "apks/TimeCalculator.apk"
             }
         ];
 
